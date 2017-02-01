@@ -1,0 +1,87 @@
+<p>
+  <alert type="success">{{'hello'|translate}}</alert>
+
+   
+</p>
+
+ 
+<div class="checkbox">
+  <label>
+    <input type="checkbox" [(ngModel)]="oneAtATime">
+    Open only one at a time
+  </label>
+</div>
+ 
+<accordion [closeOthers]="oneAtATime">
+  <accordion-group heading="Static Header, initially expanded"
+                   [isOpen]="status2.isFirstOpen"
+                   [isDisabled]="status2.isFirstDisabled">
+    This content is straight in the template.
+  </accordion-group>
+  <accordion-group *ngFor="let group of groups" [heading]="group.title">
+     {{ group?.content }}
+  </accordion-group>
+  <accordion-group heading="Dynamic Body Content">
+    <p>The body of the accordion group grows to fit the contents</p>
+    <button type="button" class="btn btn-primary btn-sm" (click)="addItem()">Add Item</button>
+    <div *ngFor="let item of items">{{item}}</div>
+  </accordion-group>
+  <accordion-group #group [isOpen]="status2.open">
+    <div accordion-heading>
+      I can have markup, too!
+      <i class="pull-right glyphicon"
+         [ngClass]="{'glyphicon-chevron-down': group?.isOpen, 'glyphicon-chevron-right': !group?.isOpen}"></i>
+    </div>
+    This is just some content to illustrate fancy headings.
+  </accordion-group>
+  <accordion-group #group [isOpen]="status2.open">
+    <div accordion-heading>
+      I can have markup, too!
+      <i class="pull-right glyphicon"
+         [ngClass]="{'glyphicon-chevron-down': group?.isOpen, 'glyphicon-chevron-right': !group?.isOpen}"></i>
+    </div>
+    This is just some content to illustrate fancy headings.
+  </accordion-group>
+  <accordion-group #group [isOpen]="status2.open">
+    <div accordion-heading>
+      I can have markup, too!
+      <i class="pull-right glyphicon"
+         [ngClass]="{'glyphicon-chevron-down': group?.isOpen, 'glyphicon-chevron-right': !group?.isOpen}"></i>
+    </div>
+    This is just some content to illustrate fancy headings.
+  </accordion-group>
+  <accordion-group #group [isOpen]="status2.open">
+    <div accordion-heading>
+      I can have markup, too!
+      <i class="pull-right glyphicon"
+         [ngClass]="{'glyphicon-chevron-down': group?.isOpen, 'glyphicon-chevron-right': !group?.isOpen}"></i>
+    </div>
+    This is just some content to illustrate fancy headings.
+  </accordion-group>
+  <accordion-group #group [isOpen]="status2.open">
+    <div accordion-heading>
+      I can have markup, too!
+      <i class="pull-right glyphicon"
+         [ngClass]="{'glyphicon-chevron-down': group?.isOpen, 'glyphicon-chevron-right': !group?.isOpen}"></i>
+    </div>
+    This is just some content to illustrate fancy headings.
+  </accordion-group>
+  <accordion-group #group [isOpen]="status2.open">
+    <div accordion-heading>
+      I can have markup, too!
+      <i class="pull-right glyphicon"
+         [ngClass]="{'glyphicon-chevron-down': group?.isOpen, 'glyphicon-chevron-right': !group?.isOpen}"></i>
+    </div>
+    This is just some content to illustrate fancy headings.
+  </accordion-group>
+  <accordion-group #group [isOpen]="status2.open">
+    <div accordion-heading>
+      I can have markup, too!
+      <i class="pull-right glyphicon"
+         [ngClass]="{'glyphicon-chevron-down': group?.isOpen, 'glyphicon-chevron-right': !group?.isOpen}"></i>
+    </div>
+    This is just some content to illustrate fancy headings.
+  </accordion-group>
+  
+</accordion>
+

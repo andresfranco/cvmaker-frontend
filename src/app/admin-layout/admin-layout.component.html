@@ -1,0 +1,102 @@
+<html style="height:100%;">
+<head>
+</head>
+<body style="height:100%;">
+ <!-- Main Row Container --> 
+<div class="row">
+  <!-- Header Nav bar--> 
+  <nav class="navbar navbar-default ">
+    <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"  (click)="isCollapsed = !isCollapsed">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/Phalcontest/index/home"> <i class="fa fa-book"></i> EL CURRICULLUM</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" [collapse]="isCollapsed">
+       
+      <ul class="nav navbar-nav navbar-right" style="margin-left:10px;margin-right:10px;margin-top:20px;">
+      <li  class="dropdown" dropdown [(isOpen)]="status_languages.isopen">  
+      <button id="button-languages" type="button" class="dropdown-toggle"aria-expanded="false" role="button" dropdownToggle [disabled]="disabled" style="border: none;background: none;">
+        <img [src]="images_path+default_language_values.flag"> {{default_language_values.language}}<span class="caret"></span>
+      </button>
+       <ul dropdownMenu role="menu" aria-labelledby="single-button1">
+        <li role="menuitem" *ngFor="let item of Languages; let i = index;" ><a (click)="Change_Language(item);selectLang(item.code)"><img [src]="images_path+item.flag"> {{item.language}} </a></li>  
+      </ul>
+      </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right"  style="margin-left:10px;margin-right:10px;margin-top:20px;">
+      <li  class="dropdown" dropdown [(isOpen)]="status_user.isopen">
+      <button id="button-user" type="button" class="dropdown-toggle"aria-expanded="false" role="button" dropdownToggle [disabled]="disabled" style="border: none;background: none;">
+      <img [src]="images_path+'avatar.png'" width="16px" height="16px"> {{username}}<span class="caret"></span>
+      </button>
+      <ul dropdownMenu role="menu" aria-labelledby="single-button">
+      <li role="menuitem"><a (click)="LogOut()">Logout</a></li>
+      </ul>
+      </li>
+      <li></li>
+      </ul>
+     
+      
+      </div>
+    </div>
+  </nav>
+<!--End Header Nav bar--> 
+
+  <!-- Content menu and main content -->
+  <div class="row"> 
+    <!-- Accordion Menu -->
+    <div class="col-sm-12 col-md-2 col-xs-12 col-lg-2 accordion_menu">
+    <div class="panel-group" id="accordion">
+    <div class="panel panel-default">
+    <a data-toggle="collapse"  (click)="isCollapsed_panel1 = !isCollapsed_panel1;Change_Panel_Properties(isCollapsed_panel1);">  
+      <div [ngClass]="[Change_Panel_Properties(isCollapsed_panel1)]">
+      <h4 class="panel-title">
+      <span class="glyphicon glyphicon-folder-close">
+      </span> {{'Content'| translate}}
+      </h4>
+      </div>
+    </a>
+    <div id="collapseOne" [collapse]="isCollapsed_panel1">
+    <ul class="list-group">
+    <a class="list-group-item" [routerLink]="['home']" routerLinkActive="option_active">
+      <span class="glyphicon glyphicon-home"></span>
+      Home 
+    </a>
+    <a class="list-group-item" [routerLink]="['curricullum']"  routerLinkActive="option_active"><span class="glyphicon glyphicon-book"></span> Curricullum </a>
+    </ul>
+    </div>
+    </div>
+    <div class="panel panel-default">
+    <a (click)="isCollapsed_panel2 = !isCollapsed_panel2;Change_Panel_Properties(isCollapsed_panel2);">  
+    <div class="panel-heading"[ngClass]="[Change_Panel_Properties(isCollapsed_panel2)]">
+    <h4 class="panel-title"><span class="glyphicon glyphicon-cog"></span> System</h4>
+    </div>
+    </a>
+    <div id="collapseFour" class="panel-collapse collapse"  [collapse]="isCollapsed_panel2">
+    <div class="list-group">
+    <a class="list-group-item" routerLinkActive="option_active"><i class="fa fa-language" aria-hidden="true"></i> Languages </a>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <!-- End Accordion Menu --> 
+  <!-- Main Content--> 
+  <div class="col-sm-12 col-md-10 col-xs-12 col-lg-10 column_content">
+    <div class="main_content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <!-- End Main Content-->   
+  </div>
+
+</div>
+ 
+</body>
+</html>
